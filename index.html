@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería Contemporánea | Arte Moderno</title>
+  <meta name="description" content="Explora la Galería Contemporánea, una colección de arte moderno con obras exclusivas y biografía del artista.">
+  <meta name="keywords" content="galería de arte, arte moderno, esculturas, pinturas, artista contemporáneo">
+  <meta property="og:title" content="Galería Contemporánea - Arte Moderno">
+  <meta property="og:description" content="Descubre las obras de arte más inspiradoras del artista contemporáneo.">
+  <meta property="og:image" content="images/banner.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- ENCABEZADO -->
+  <header>
+    <div class="logo">Galería Contemporánea</div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#galeria">Obras</a></li>
+        <li><a href="#artista">Sobre el artista</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- BANNER PRINCIPAL -->
+  <section id="inicio" class="banner">
+    <div class="banner-texto">
+      <h1>La expresión del arte moderno</h1>
+      <p>Explora una colección única de pintura y escultura contemporánea.</p>
+      <a href="#galeria" class="boton">Explorar Obras</a>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria" class="galeria">
+    <h2>Galería de Obras</h2>
+    <div class="contenedor-galeria">
+      <div class="obra">
+        <img src="images/obra1.jpg" alt="Pintura abstracta colorida" onclick="abrirModal(this)">
+      </div>
+      <div class="obra">
+        <img src="images/obra2.jpg" alt="Escultura moderna en mármol" onclick="abrirModal(this)">
+      </div>
+      <div class="obra">
+        <img src="images/obra3.jpg" alt="Lienzo contemporáneo minimalista" onclick="abrirModal(this)">
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE IMAGEN -->
+  <div id="modal" class="modal" onclick="cerrarModal()">
+    <span class="cerrar">&times;</span>
+    <img class="modal-contenido" id="imgModal" alt="">
+    <div id="caption"></div>
+  </div>
+
+  <!-- SOBRE EL ARTISTA -->
+  <section id="artista" class="artista">
+    <h2>Sobre el artista</h2>
+    <p>
+      Nacido en Medellín, el artista detrás de esta galería ha dedicado más de dos décadas 
+      a la exploración del arte moderno. Su trabajo combina técnicas clásicas con conceptos 
+      contemporáneos, buscando provocar emoción, reflexión y diálogo en cada espectador.
+    </p>
+    <a href="artista.html" class="boton">Ver más</a>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer id="contacto">
+    <p>© 2025 Galería Contemporánea | Todos los derechos reservados</p>
+  </footer>
+
+  <!-- SCRIPT MODAL -->
+  <script>
+    function abrirModal(img) {
+      const modal = document.getElementById("modal");
+      const modalImg = document.getElementById("imgModal");
+      const caption = document.getElementById("caption");
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      caption.textContent = img.alt;
+    }
+
+    function cerrarModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
