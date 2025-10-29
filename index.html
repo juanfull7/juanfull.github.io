@@ -1,93 +1,312 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Galería Contemporánea | Arte Moderno</title>
-  <meta name="description" content="Explora la Galería Contemporánea, una colección de arte moderno con obras exclusivas y biografía del artista.">
-  <meta name="keywords" content="galería de arte, arte moderno, esculturas, pinturas, artista contemporáneo">
-  <meta property="og:title" content="Galería Contemporánea - Arte Moderno">
-  <meta property="og:description" content="Descubre las obras de arte más inspiradoras del artista contemporáneo.">
-  <meta property="og:image" content="images/banner.jpg">
-  <link rel="stylesheet" href="style.css">
+  <title>Galería Contemporánea | Arte Latinoamericano</title>
+  <meta name="description" content="Explora la Galería Contemporánea, colecciones de arte latinoamericano moderno y contemporáneo." />
+  <meta name="keywords" content="galería de arte, arte latinoamericano, arte contemporáneo, Medellín" />
+  <meta property="og:title" content="Galería Contemporánea – Arte Latinoamericano" />
+  <meta property="og:description" content="Descubre obras únicas de arte latinoamericano en nuestra galería." />
+  <meta property="og:image" content="images/banner.jpg" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
+  <style>
+    /* ====== RESET BÁSICO ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+  line-height: 1.6;
+  background: #fff;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ====== ENCABEZADO ====== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+.logo {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+nav a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+}
+nav a:hover {
+  color: #a52a2a;
+}
+
+/* ====== BANNER ====== */
+.banner {
+  position: relative;
+  background: url('images/banner.jpg') no-repeat center center/cover;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-center: center;
+  text-align: center;
+  color: #fff;
+}
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+.banner-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 20px;
+}
+.banner-content h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+.banner-content p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+.btn {
+  background: #a52a2a;
+  color: #fff;
+  padding: 12px 30px;
+  border-none;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1em;
+  transition: background 0.3s ease;
+}
+.btn:hover {
+  background: #d94b4b;
+}
+
+/* ====== GALERÍA ====== */
+.galeria {
+  padding: 80px 0;
+  text-align: center;
+}
+.galeria h2 {
+  font-size: 2em;
+  margin-bottom: 40px;
+}
+.grid-galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+.obra {
+  overflow: hidden;
+  position: relative;
+}
+.obra img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+.obra img:hover {
+  transform: scale(1.1);
+}
+
+/* ====== MODAL ====== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* Hacer el modal flex para centrar */
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ====== SOBRE EL ARTISTA ====== */
+.artista {
+  padding: 80px 0;
+  background: #f8f8f8;
+  text-align: center;
+}
+.artista h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+.artista p {
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+.artista .btn {
+  padding: 12px 30px;
+}
+
+/* ====== PIE DE PÁGINA ====== */
+.footer {
+  background: #222;
+  color: #ddd;
+  padding: 40px 0;
+  text-align: center;
+}
+.footer-inner p {
+  margin-bottom: 10px;
+}
+.footer a {
+  color: #ddd;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #fff;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .banner-content h1 {
+    font-size: 2em;
+  }
+  .banner-content p {
+    font-size: 1em;
+  }
+  nav ul {
+    gap: 15px;
+  }
+}
+  </style>
+  
 <body>
   <!-- ENCABEZADO -->
   <header>
-    <div class="logo">Galería Contemporánea</div>
-    <nav>
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#galeria">Obras</a></li>
-        <li><a href="#artista">Sobre el artista</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
+    <div class="container header-inner">
+      <div class="logo">Galería Contemporánea</div>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#galeria">Obras</a></li>
+          <li><a href="#artista">Sobre el artista</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <!-- BANNER PRINCIPAL -->
   <section id="inicio" class="banner">
-    <div class="banner-texto">
-      <h1>La expresión del arte moderno</h1>
-      <p>Explora una colección única de pintura y escultura contemporánea.</p>
-      <a href="#galeria" class="boton">Explorar Obras</a>
+    <div class="banner-overlay"></div>
+    <div class="banner-content container">
+      <h1>La expresión del arte latinoamericano</h1>
+      <p>Obras contemporáneas de artistas emergentes y consagrados.</p>
+      <a href="#galeria" class="btn">Explorar Obras</a>
     </div>
   </section>
 
   <!-- GALERÍA -->
-  <section id="galeria" class="galeria">
+  <section id="galeria" class="galeria container">
     <h2>Galería de Obras</h2>
-    <div class="contenedor-galeria">
+    <div class="grid-galeria">
       <div class="obra">
-        <img src="images/obra1.jpg" alt="Pintura abstracta colorida" onclick="abrirModal(this)">
+        <img src="images/obra1.jpg" alt="Obra 1 – Pintura latinoamericana" onclick="openModal(this)">
       </div>
       <div class="obra">
-        <img src="images/obra2.jpg" alt="Escultura moderna en mármol" onclick="abrirModal(this)">
+        <img src="images/obra2.jpg" alt="Obra 2 – Escultura contemporánea" onclick="openModal(this)">
       </div>
       <div class="obra">
-        <img src="images/obra3.jpg" alt="Lienzo contemporáneo minimalista" onclick="abrirModal(this)">
+        <img src="images/obra3.jpg" alt="Obra 3 – Lienzo moderno" onclick="openModal(this)">
       </div>
     </div>
   </section>
 
   <!-- MODAL DE IMAGEN -->
-  <div id="modal" class="modal" onclick="cerrarModal()">
-    <span class="cerrar">&times;</span>
-    <img class="modal-contenido" id="imgModal" alt="">
+  <div id="modal" class="modal" onclick="closeModal(event)">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="imgModal" alt="">
     <div id="caption"></div>
   </div>
 
   <!-- SOBRE EL ARTISTA -->
-  <section id="artista" class="artista">
+  <section id="artista" class="artista container">
     <h2>Sobre el artista</h2>
     <p>
-      Nacido en Medellín, el artista detrás de esta galería ha dedicado más de dos décadas 
-      a la exploración del arte moderno. Su trabajo combina técnicas clásicas con conceptos 
-      contemporáneos, buscando provocar emoción, reflexión y diálogo en cada espectador.
+      Nacido en Medellín, este artista explora la dualidad entre tradición y vanguardia 
+      en el arte latinoamericano. Con más de veinte exposiciones nacionales e internacionales, 
+      su obra invita a la reflexión sobre identidad, memoria y territorio.
     </p>
-    <a href="artista.html" class="boton">Ver más</a>
+    <a href="artista.html" class="btn">Ver más</a>
   </section>
 
   <!-- PIE DE PÁGINA -->
-  <footer id="contacto">
-    <p>© 2025 Galería Contemporánea | Todos los derechos reservados</p>
+  <footer id="contacto" class="footer">
+    <div class="container footer-inner">
+      <p>© 2025 Galería Contemporánea | Todos los derechos reservados</p>
+      <p>Ubicación: Medellín, Colombia</p>
+      <p>Email: contacto@galeriacontemporanea.com</p>
+    </div>
   </footer>
 
   <!-- SCRIPT MODAL -->
   <script>
-    function abrirModal(img) {
+    function openModal(imgEl) {
       const modal = document.getElementById("modal");
       const modalImg = document.getElementById("imgModal");
       const caption = document.getElementById("caption");
       modal.style.display = "block";
-      modalImg.src = img.src;
-      caption.textContent = img.alt;
+      modalImg.src = imgEl.src;
+      caption.textContent = imgEl.alt;
     }
 
-    function cerrarModal() {
-      document.getElementById("modal").style.display = "none";
+    function closeModal(event) {
+      if (event.target.id === "modal" || event.target.classList.contains("close")) {
+        document.getElementById("modal").style.display = "none";
+      }
     }
   </script>
 </body>
 </html>
+
